@@ -1,0 +1,26 @@
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
+    color: white;
+    overflow-x: hidden;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
