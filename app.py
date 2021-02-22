@@ -41,15 +41,31 @@ def masukinObat():
         "kode" : 200
     })
 
-@app.route("/obat<id>", methods=["PUT"])
+@app.route("/obat/<id>", methods=["PUT"])
 def editObat(id):
-    sql = "UPDATE obat SET (nama = %s, jumlah = %s WHERE id = %s"
+    sql = "UPDATE obat SET nama = %s, jumlah = %s WHERE id = %s"
     nama = request.json['nama']
-    jumlah = request.json['jumlah']
+    jumlah = int(request.json['jumlah'])
     value = (nama, jumlah, id)
     mycursor.execute(sql, value)
     return json.dumps({
         "pesan" : "obat sudah diedit",
+        "kode" : 200
+    })
+
+@app.route('/obat/<id>')
+def detailObat(id):
+    sql = "SELECT * FROM obat WHERE id = " +id
+    mycursor.execute(sql)
+    data = mycursor.fetchall()
+    return json.dumps({"data" : data})
+
+@app.route("/obat/<id>", methods=["DELETE"])
+def deleteObat(id):
+    sql = "DELETE FROM obat WHERE id = " +id
+    mycursor.execute(sql)
+    return json.dumps({
+        "pesan" : "obat sudah dihapus",
         "kode" : 200
     })
 
